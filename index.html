@@ -1987,7 +1987,10 @@ function boot() {
     const scale = Math.max(W / src.width, H / src.height);
     const dw = src.width * scale;
     const dh = src.height * scale;
+    ctx.save();
+    ctx.filter = 'brightness(1.15) contrast(1.03) saturate(1.15)';   // ← 想更亮就调大 1.15
     ctx.drawImage(src, (W - dw) / 2, (H - dh) / 2, dw, dh);
+    ctx.restore();
 
     const grd = ctx.createLinearGradient(0, 0, 0, H);
     grd.addColorStop(0, 'rgba(6,4,12,.72)');
