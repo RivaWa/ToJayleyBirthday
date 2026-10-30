@@ -551,7 +551,7 @@ function boot() {
       if (!AC) return;
       this.ctx = new AC();
       this.master = this.ctx.createGain();
-      this.master.gain.value = 0.85;
+      this.master.gain.value = 1.0;
       // 一點空間感
       this.delay = this.ctx.createDelay(1);
       this.delay.delayTime.value = 0.26;
@@ -655,8 +655,8 @@ function boot() {
       const beat = 0.46;
       let t = 0;
       melody.forEach(([n, d]) => {
-        this.tone(N[n], Math.max(0.9, d * beat * 1.8), 0.1, 'triangle', t + 0.05);
-        this.tone(N[n] / 2, Math.max(1.2, d * beat * 2.2), 0.05, 'sine', t + 0.05);
+        this.tone(N[n], Math.max(0.9, d * beat * 1.8), 0.18, 'triangle', t + 0.05);
+        this.tone(N[n] / 2, Math.max(1.2, d * beat * 2.2), 0.09, 'sine', t + 0.05);
         t += d * beat;
       });
     }
@@ -2120,7 +2120,7 @@ function boot() {
 
   soundBtn.addEventListener('click', () => {
     audio.enabled = !audio.enabled;
-    if (audio.master) audio.master.gain.value = audio.enabled ? 0.85 : 0;
+    if (audio.master) audio.master.gain.value = audio.enabled ? 1.0 : 0;
     soundBtn.textContent = audio.enabled ? '♪' : '✕';
     soundBtn.style.opacity = audio.enabled ? '.85' : '.45';
   });
